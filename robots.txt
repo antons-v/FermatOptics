@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Fotos de prova: no s'han d'indexar (i s'esborraran abans de publicar)
+Disallow: /public/images/tests/
+
+Sitemap: https://fermatoptics.com/sitemap.xml

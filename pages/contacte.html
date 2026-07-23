@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacte · Fermat Òptics Barcelona · Ausiàs Marc i Còrsega</title>
+<meta name="description" content="Dues botigues a Barcelona: Ausiàs Marc 59 (932 444 275) i Còrsega 671 (934 562 201). Escriu-nos o demana hora per a la teva revisió visual o auditiva.">
+<link rel="canonical" href="https://fermatoptics.com/contacte.html">
+<meta property="og:title" content="Contacte · Fermat Òptics Barcelona">
+<meta property="og:description" content="Dues botigues a Barcelona. Escriu-nos o demana hora.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fermatoptics.com/contacte.html">
+<meta property="og:locale" content="ca_ES">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<a class="salta-nav" href="#principal">Salta al contingut</a>
+
+<header class="capcalera">
+  <div class="contenidor capcalera__interior">
+    <a class="marca" href="index.html">Fermat <span>Òptics</span></a>
+
+    <nav class="nav--ample" aria-label="Principal">
+      <ul class="nav__llista">
+        <li><a href="index.html">Inici</a></li>
+        <li><a href="serveis.html">Serveis</a></li>
+        <li><a href="optica.html">Òptica</a></li>
+        <li><a href="audio.html">Àudio</a></li>
+        <li><a href="contacte.html" aria-current="page">Contacte</a></li>
+      </ul>
+    </nav>
+
+    <details class="menu">
+      <summary aria-label="Obre el menú"></summary>
+      <div class="menu__panell">
+        <nav aria-label="Principal">
+          <ul class="nav__llista">
+            <li><a href="index.html">Inici</a></li>
+            <li><a href="serveis.html">Serveis</a></li>
+            <li><a href="optica.html">Òptica</a></li>
+            <li><a href="audio.html">Àudio</a></li>
+            <li><a href="contacte.html" aria-current="page">Contacte</a></li>
+          </ul>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="principal">
+
+  <section class="portada portada--interior">
+    <div class="contenidor">
+      <p class="eyebrow">Contacte</p>
+      <h1>Som aquí per ajudar-te</h1>
+      <p class="plom">
+        Truca'ns, escriu-nos per WhatsApp o passa per qualsevol de les dues
+        botigues. T'assessorem personalment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formulari primer -->
+  <section class="banda">
+    <div class="contenidor">
+      <div class="encap">
+        <p class="eyebrow">Escriu-nos</p>
+        <h2>Demana hora</h2>
+        <p class="plom">
+          Deixa'ns les teves dades i et responem al més aviat possible.
+        </p>
+      </div>
+
+      <!--
+        FORMULARI — PENDENT DE CONFIGURAR
+        Cal substituir CODI-FORMSPREE per l'identificador real de Formspree.
+        Passos: crear compte a formspree.io, donar d'alta el formulari amb el
+        correu de destinació de la botiga i confirmar-lo des d'aquell correu.
+        Sense això, l'enviament no arriba enlloc.
+      -->
+      <form class="formulari"
+            action="https://formspree.io/f/CODI-FORMSPREE"
+            method="POST"
+            style="margin-inline:auto">
+
+        <div class="camp">
+          <label for="nom">Nom i cognoms</label>
+          <input type="text" id="nom" name="nom" autocomplete="name" required>
+        </div>
+
+        <div class="camp">
+          <label for="email">Correu electrònic</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="camp">
+          <label for="telefon">Telèfon</label>
+          <input type="tel" id="telefon" name="telefon" autocomplete="tel">
+        </div>
+
+        <div class="camp">
+          <label for="servei">Quin servei t'interessa?</label>
+          <select id="servei" name="servei" required>
+            <option value="">Tria una opció…</option>
+            <option>Revisió visual / graduació</option>
+            <option>Ulleres o muntures</option>
+            <option>Lents de contacte</option>
+            <option>Control de miopia infantil</option>
+            <option>Estudi auditiu / audiòfons</option>
+            <option>Reparació</option>
+            <option>Una altra cosa</option>
+          </select>
+        </div>
+
+        <!-- Parany antispam: les persones no el veuen, els bots l'omplen i els descartem -->
+        <div class="parany" aria-hidden="true">
+          <label for="empresa">No omplis aquest camp</label>
+          <input type="text" id="empresa" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="consentiment">
+          <input type="checkbox" name="consentiment" required>
+          <span>
+            He llegit i accepto la
+            <a href="politica-privacitat.html">política de privacitat</a>.
+            Les meves dades s'utilitzaran únicament per respondre aquesta consulta.
+          </span>
+        </label>
+
+        <div class="botons">
+          <button class="boto boto--ple" type="submit">Envia</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Després, les botigues amb foto i informació -->
+  <section>
+    <div class="contenidor">
+      <div class="graella">
+
+        <div class="botiga">
+          <img class="botiga__foto"
+               src="../public/images/fermat/botiga-ausias-marc.avif"
+               width="266" height="238" loading="lazy" decoding="async"
+               alt="Botiga de Fermat Òptics al carrer Ausiàs Marc">
+          <div class="botiga__cos">
+            <h3>Ausiàs Marc</h3>
+            <dl>
+              <dt>Adreça</dt>
+              <dd>Ausiàs Marc, 59<br>08010 Barcelona<br>(Eixample)</dd>
+              <dt>Telèfon</dt>
+              <dd><a href="tel:+34932444275">932 444 275</a></dd>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/34649544328">649 544 328</a></dd>
+              <dt>Horari</dt>
+              <dd>Pendent de confirmar</dd>
+            </dl>
+            <div class="botons">
+              <a class="boto boto--buit"
+                 href="https://www.google.com/maps/search/?api=1&query=Ausi%C3%A0s+Marc+59+Barcelona"
+                 rel="noopener">Veure al mapa</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="botiga">
+          <img class="botiga__foto"
+               src="../public/images/fermat/botiga-corsega.avif"
+               width="384" height="180" loading="lazy" decoding="async"
+               alt="Botiga de Fermat Òptics al carrer Còrsega">
+          <div class="botiga__cos">
+            <h3>Còrsega</h3>
+            <dl>
+              <dt>Adreça</dt>
+              <dd>Còrsega, 671<br>08026 Barcelona<br>(Sant Martí)</dd>
+              <dt>Telèfon</dt>
+              <dd><a href="tel:+34934562201">934 562 201</a></dd>
+              <dt>WhatsApp</dt>
+              <dd><a href="https://wa.me/34633726053">633 726 053</a></dd>
+              <dt>Horari</dt>
+              <dd>Pendent de confirmar</dd>
+            </dl>
+            <div class="botons">
+              <a class="boto boto--buit"
+                 href="https://www.google.com/maps/search/?api=1&query=Carrer+de+C%C3%B2rsega+671+Barcelona"
+                 rel="noopener">Veure al mapa</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contenidor">
+      <div class="encap">
+        <h2>Prefereixes trucar?</h2>
+        <p class="plom">
+          De vegades és més ràpid. Tria la botiga que et queda més a prop.
+        </p>
+        <div class="botons" style="justify-content:center">
+          <a class="boto boto--buit" href="tel:+34932444275">Ausiàs Marc · 932 444 275</a>
+          <a class="boto boto--buit" href="tel:+34934562201">Còrsega · 934 562 201</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="peu">
+  <div class="contenidor">
+    <div class="peu__graella">
+      <div>
+        <h4>Fermat Òptics</h4>
+        <p style="color:var(--text-suau)">
+          Centre òptic i auditiu a Barcelona des del 1998.
+        </p>
+      </div>
+      <div>
+        <h4>Botiga Ausiàs Marc</h4>
+        <address>
+          Ausiàs Marc, 59<br>
+          08010 Barcelona<br>
+          <a href="tel:+34932444275">932 444 275</a>
+        </address>
+      </div>
+      <div>
+        <h4>Botiga Còrsega</h4>
+        <address>
+          Còrsega, 671<br>
+          08026 Barcelona<br>
+          <a href="tel:+34934562201">934 562 201</a>
+        </address>
+      </div>
+      <div>
+        <h4>Web</h4>
+        <ul>
+          <li><a href="serveis.html">Serveis</a></li>
+          <li><a href="optica.html">Òptica</a></li>
+          <li><a href="audio.html">Àudio</a></li>
+          <li><a href="contacte.html">Contacte</a></li>
+          <li><a href="https://www.instagram.com/fermatoptics/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="peu__baix">
+      <p>© 2026 Fermat Òptics</p>
+      <p>
+        <a href="avis-legal.html">Avís legal</a> ·
+        <a href="politica-privacitat.html">Privacitat</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

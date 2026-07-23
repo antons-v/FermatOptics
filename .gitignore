@@ -1,0 +1,14 @@
+# Sistema operatiu
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fitxers pesants no usats per la web (originals en brut)
+*.zip
+*.tif
+*.tiff
+
+# Dependències / temporals (per si de cas)
+node_modules/
+.cache/
+dist/

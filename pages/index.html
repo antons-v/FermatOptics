@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fermat Òptics · Òptica i audiologia a Barcelona</title>
+<meta name="description" content="Centre òptic i auditiu a Barcelona des del 1998. Optometria, salut ocular, contactologia, control de miopia infantil i audiologia. Dues botigues: Ausiàs Marc i Còrsega.">
+<link rel="canonical" href="https://fermatoptics.com/">
+<meta property="og:title" content="Fermat Òptics · Òptica i audiologia a Barcelona">
+<meta property="og:description" content="Centre òptic i auditiu a Barcelona des del 1998. Cuidem la teva visió i la teva audició.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fermatoptics.com/">
+<meta property="og:locale" content="ca_ES">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- Fitxes de negoci local: el que fa que apareguin al mapa de Google quan algú
+     busca "òptica prop de mi" o "audiòfons Barcelona". Una fitxa per botiga.
+     PENDENT: afegir openingHours quan el client ens passi els horaris. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://fermatoptics.com/#organitzacio",
+      "name": "Fermat Òptics",
+      "url": "https://fermatoptics.com/",
+      "foundingDate": "1998",
+      "description": "Centre òptic i auditiu a Barcelona des del 1998.",
+      "sameAs": ["https://www.instagram.com/fermatoptics/"]
+    },
+    {
+      "@type": "Optician",
+      "@id": "https://fermatoptics.com/#botiga-ausias-marc",
+      "name": "Fermat Òptics · Ausiàs Marc",
+      "parentOrganization": { "@id": "https://fermatoptics.com/#organitzacio" },
+      "url": "https://fermatoptics.com/contacte.html",
+      "telephone": "+34932444275",
+      "currenciesAccepted": "EUR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ausiàs Marc, 59",
+        "postalCode": "08010",
+        "addressLocality": "Barcelona",
+        "addressRegion": "Barcelona",
+        "addressCountry": "ES"
+      },
+      "areaServed": "Barcelona",
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Optometria i revisions visuals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contactologia" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Control de miopia infantil" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audiometria i audiòfons" } }
+      ]
+    },
+    {
+      "@type": "Optician",
+      "@id": "https://fermatoptics.com/#botiga-corsega",
+      "name": "Fermat Òptics · Còrsega",
+      "parentOrganization": { "@id": "https://fermatoptics.com/#organitzacio" },
+      "url": "https://fermatoptics.com/contacte.html",
+      "telephone": "+34934562201",
+      "currenciesAccepted": "EUR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Còrsega, 671",
+        "postalCode": "08026",
+        "addressLocality": "Barcelona",
+        "addressRegion": "Barcelona",
+        "addressCountry": "ES"
+      },
+      "areaServed": "Barcelona",
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Optometria i revisions visuals" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contactologia" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Control de miopia infantil" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audiometria i audiòfons" } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="salta-nav" href="#principal">Salta al contingut</a>
+
+<header class="capcalera">
+  <div class="contenidor capcalera__interior">
+    <a class="marca" href="index.html">Fermat <span>Òptics</span></a>
+
+    <nav class="nav--ample" aria-label="Principal">
+      <ul class="nav__llista">
+        <li><a href="index.html" aria-current="page">Inici</a></li>
+        <li><a href="serveis.html">Serveis</a></li>
+        <li><a href="optica.html">Òptica</a></li>
+        <li><a href="audio.html">Àudio</a></li>
+        <li><a href="contacte.html">Contacte</a></li>
+      </ul>
+    </nav>
+
+    <details class="menu">
+      <summary aria-label="Obre el menú"></summary>
+      <div class="menu__panell">
+        <nav aria-label="Principal">
+          <ul class="nav__llista">
+            <li><a href="index.html" aria-current="page">Inici</a></li>
+            <li><a href="serveis.html">Serveis</a></li>
+            <li><a href="optica.html">Òptica</a></li>
+            <li><a href="audio.html">Àudio</a></li>
+            <li><a href="contacte.html">Contacte</a></li>
+          </ul>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="principal">
+
+  <!-- HERO ROTATORI — fosa encadenada en CSS pur, sense JavaScript.
+       Cada foto es veu 15 s. Les tres imatges carreguen d'entrada perquè
+       totes es veuen a la part superior. -->
+  <section class="hero" aria-label="Fermat Òptics">
+    <img class="hero__slide"
+         src="../public/images/fermat/frames-display.avif"
+         sizes="100vw" width="1745" height="500"
+         fetchpriority="high" decoding="async"
+         alt="Muntures a Fermat Òptics">
+    <img class="hero__slide"
+         src="../public/images/fermat/ulleres-metall.avif"
+         sizes="100vw" width="1897" height="606"
+         decoding="async" alt="">
+    <img class="hero__slide"
+         src="../public/images/fermat/dona-llegint.avif"
+         sizes="100vw" width="949" height="681"
+         decoding="async" alt="">
+  </section>
+
+  <section class="portada portada--interior portada--intro">
+    <div class="contenidor">
+      <h1>Viu l'experiència de veure el món amb la teva millor visió...</h1>
+      <p class="plom">
+        A Fermat Òptics t’acompanyem en un recorregut on la salut visual, el benestar i l’estil es troben. Cada visita és una oportunitat per cuidar la teva visió i trobar les solucions òptiques que millor s’adapten a tu.
+      </p>
+      <p class="plom">
+        Des de 1998, el nostre equip de professionals treballa amb dedicació i esperit innovador per oferir un assessorament
+        personalitzat, perquè veure bé significa també viure millor.
+      </p>
+      <p class="plom">
+        El nostre nom s’inspira en el científic Pierre de Fermat, que va demostrar que la llum sempre troba el camí més ràpid per 
+        arribar al seu destí. Aquesta idea ens inspira cada dia: ajudar-te a trobar la millor manera de veure el món amb claredat,
+        comoditat i confiança.
+      </p>
+      <p class="plom">
+        Perquè veure bé no és només una necessitat, és una experiència que es nota cada dia.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Franja de foto alargada -->
+  <section class="faixa-foto" aria-hidden="true">
+    <img src="../public/images/fermat/fermat-deco.avif"
+         sizes="100vw" width="1897" height="594"
+         loading="lazy" decoding="async" alt="">
+  </section>
+
+  <!-- Banda taronja: rejilla amb foto (esquerra) i text (dreta) -->
+  <section class="banda-taronja">
+    <div class="contenidor">
+      <div class="duo">
+        <div class="duo__foto">
+          <img src="../public/images/fermat/benvinguts.avif"
+               sizes="(max-width: 54rem) 92vw, 30rem"
+               width="426" height="532" loading="lazy" decoding="async"
+               alt="Benvinguts a Fermat Òptics">
+        </div>
+        <div>
+          <h2>Hola! Benvinguts a Fermat Òptics</h2>
+          <p class="plom">
+          Fermat Òptics és un centre òptic fundat l’any 1998, format per un equip de professionals qualificats amb una àmplia experiència en la cura de la salut visual i auditiva.
+          </p>
+          <p class="plom">
+          Ens dediquem a cuidar, protegir i millorar la visió i l’audició dels nostres clients mitjançant revisions completes i un assessorament personalitzat per trobar la millor solució en cada cas.
+          </p>
+          <p class="plom">
+          Treballem amb ulleres graduades, ulleres de sol, lents de contacte i solucions auditives amb audiòfons, oferint sempre productes de qualitat adaptats a les necessitats i al ritme de vida de cada persona.
+          </p>
+          <p class="plom">
+          A Fermat Òptics apostem per un tracte proper i professional, perquè creiem que veure i sentir-hi bé és essencial per al benestar i la qualitat de vida del dia a dia.
+          </p>
+          <div class="botons">
+            <a class="boto boto--ple" href="serveis.html">Descobreix els nostres serveis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secció Què fem: 5 cercles amb foto, 3 a dalt i 2 a baix -->
+  <section>
+    <div class="contenidor">
+      <div class="encap">
+        <p class="eyebrow">Què fem</p>
+      </div>
+
+      <div class="cercles">
+        <div class="cercle">
+          <a class="cercle__foto" href="serveis.html">
+            <img src="../public/images/serveis/optometria.avif" width="200" height="200" loading="lazy" decoding="async" alt="Optometria">
+          </a>
+          <h3>Optometria</h3>
+          <a class="boto boto--buit" href="serveis.html">Veure més</a>
+        </div>
+
+        <div class="cercle">
+          <a class="cercle__foto" href="serveis.html">
+            <img src="../public/images/serveis/salut-ocular.avif" width="200" height="200" loading="lazy" decoding="async" alt="Salut ocular">
+          </a>
+          <h3>Salut ocular</h3>
+          <a class="boto boto--buit" href="serveis.html">Veure més</a>
+        </div>
+
+        <div class="cercle">
+          <a class="cercle__foto" href="serveis.html">
+            <img src="../public/images/serveis/contactologia.avif" width="200" height="200" loading="lazy" decoding="async" alt="Contactologia">
+          </a>
+          <h3>Contactologia</h3>
+          <a class="boto boto--buit" href="serveis.html">Veure més</a>
+        </div>
+
+        <div class="cercle">
+          <a class="cercle__foto" href="serveis.html">
+            <img src="../public/images/serveis/miopia-infantil.avif" width="200" height="200" loading="lazy" decoding="async" alt="Miopia infantil">
+          </a>
+          <h3>Miopia infantil</h3>
+          <a class="boto boto--buit" href="serveis.html">Veure més</a>
+        </div>
+
+        <div class="cercle">
+          <a class="cercle__foto" href="serveis.html">
+            <img src="../public/images/serveis/audiometria.avif" width="200" height="200" loading="lazy" decoding="async" alt="Audiologia">
+          </a>
+          <h3>Audiologia</h3>
+          <a class="boto boto--buit" href="serveis.html">Veure més</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mosaic 2x2: (1,1) cita · (1,2) foto parallax · (2,1) vídeo · (2,2) cita -->
+  <section class="mosaic" aria-label="Visió i so">
+    <!-- (1,1) -->
+    <div class="mosaic__cel mosaic__cel--text">
+      <blockquote class="mosaic__cita">
+        Els teus ulls no només veuen el món, també reflecteixen la llum que
+        portes a dins
+      </blockquote>
+    </div>
+
+    <!-- (1,2) foto amb efecte fix -->
+    <div class="mosaic__cel mosaic__foto" role="img"
+         aria-label="Detall d'una mirada"></div>
+
+    <!-- (2,1) vídeo (de moment, foto de mostra amb botó de reproducció) -->
+    <div class="mosaic__cel mosaic__video">
+      <!-- Quan hi hagi el vídeo, substituir aquest <img> per:
+           <video src="..." poster="..." muted loop playsinline controls></video> -->
+      <img src="../public/images/fermat/dona-llegint.avif" width="949" height="681" loading="lazy" decoding="async" alt="Clienta amb ulleres de Fermat Òptics">
+      <span class="mosaic__play" aria-hidden="true"></span>
+    </div>
+
+    <!-- (2,2) -->
+    <div class="mosaic__cel mosaic__cel--text mosaic__cel--so">
+      <blockquote class="mosaic__cita">
+        El so que t'acompanya en cada moment i fa que tot tingui més sentit
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Crida a l'acció: quadrat taronja suau, centrat -->
+  <section>
+    <div class="contenidor">
+      <div class="crida">
+        <h2>Vols millorar la teva visió?</h2>
+        <p>
+          A Fermat Òptics t'ajudem a cuidar la teva salut visual i a trobar les
+          ulleres que millor s'adapten a tu, combinant professionalitat, estil i
+          assessorament personalitzat.
+        </p>
+        <p>
+          Cada mirada és única. Per això t'oferim un servei proper i detallista
+          perquè et sentis còmode/a, segur/a i amb la millor qualitat visual.
+        </p>
+        <p>
+          Fes clic a continuació per demanar cita o contactar amb nosaltres i
+          comencem junts a cuidar la teva visió.
+        </p>
+        <div class="botons">
+          <a class="boto boto--ple" href="contacte.html">Contacta'ns</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="peu">
+  <div class="contenidor">
+    <div class="peu__graella">
+      <div>
+        <h4>Fermat Òptics</h4>
+        <p style="color:var(--text-suau)">
+          Centre òptic i auditiu a Barcelona des del 1998.
+        </p>
+      </div>
+
+      <div>
+        <h4>Botiga Ausiàs Marc</h4>
+        <address>
+          Ausiàs Marc, 59<br>
+          08010 Barcelona<br>
+          <a href="tel:+34932444275">932 444 275</a>
+        </address>
+      </div>
+
+      <div>
+        <h4>Botiga Còrsega</h4>
+        <address>
+          Còrsega, 671<br>
+          08026 Barcelona<br>
+          <a href="tel:+34934562201">934 562 201</a>
+        </address>
+      </div>
+
+      <div>
+        <h4>Web</h4>
+        <ul>
+          <li><a href="serveis.html">Serveis</a></li>
+          <li><a href="optica.html">Òptica</a></li>
+          <li><a href="audio.html">Àudio</a></li>
+          <li><a href="contacte.html">Contacte</a></li>
+          <li><a href="https://www.instagram.com/fermatoptics/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="peu__baix">
+      <p>© 2026 Fermat Òptics</p>
+      <p>
+        <a href="avis-legal.html">Avís legal</a> ·
+        <a href="politica-privacitat.html">Privacitat</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
