@@ -38,7 +38,7 @@
   --vora: #e0d8cb;
   --superficie: #fffefc;
 
-  --fons: var(--sorra);
+  --fons: #ffffff;
   --text: var(--tinta);
   --text-suau: var(--tinta-suau);
   --accent: var(--taupe);
@@ -221,8 +221,7 @@ section {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--fons) 88%, transparent);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
   border-bottom: 1px solid var(--vora);
 }
 
@@ -235,6 +234,9 @@ section {
 }
 
 .marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-titol);
   font-optical-sizing: auto;
   font-size: 1.45rem;
@@ -243,6 +245,12 @@ section {
   text-decoration: none;
   letter-spacing: 0.01em;
   white-space: nowrap;
+}
+
+.marca__logo {
+  height: 3.4rem;
+  width: auto;
+  flex-shrink: 0;
 }
 
 .marca span {
@@ -736,13 +744,51 @@ section {
 /* Intro d'Inici: títol i text més petits que la resta de la web */
 .portada--intro h1 {
   font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.25rem);
-  max-width: none; /* que el títol ocupi tota l'amplada */
+  max-width: none;
 }
 
-/* El text ocupa tota l'amplada: línies més llargues, bloc menys alt */
 .portada--intro .plom {
   font-size: 1rem;
   max-width: none;
+}
+
+.portada--intro .plom + .plom {
+  margin-top: 1rem;
+}
+
+/* Els 3 paràgrafs en fila (3 columnes), text a l'esquerra */
+.intro-cols {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  margin-top: calc(var(--pas) * 1.4);
+  text-align: left;
+}
+
+@media (min-width: 48rem) {
+  .intro-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.intro-cols p {
+  color: var(--text-suau);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  max-width: none;
+}
+
+/* Frase de tancament, en Bodoni cursiva, centrada. Ampla per cabre en 2 línies */
+.intro-tanca {
+  font-family: var(--font-titol);
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: clamp(1.2rem, 1rem + 1.1vw, 1.7rem);
+  line-height: 1.4;
+  text-align: center;
+  text-wrap: balance;
+  max-width: 46ch;
+  margin: calc(var(--pas) * 1.8) auto 0;
+  color: var(--accent);
 }
 
 /* Franja de foto alargada, a tota amplada.
@@ -869,6 +915,7 @@ section {
 .mosaic {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-block: 0; /* a sang: sense el marge gran de <section> */
 }
 
 .mosaic__cel {
@@ -968,17 +1015,17 @@ section {
    -------------------------------------------------------------------------- */
 
 .logos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-  gap: 1.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centra cada fila, també l'última incompleta */
   align-items: center;
-  justify-items: center;
+  gap: 2rem 2.75rem;
   margin-top: calc(var(--pas) * 1.6);
 }
 
 .logos img {
-  max-width: 7rem;
-  max-height: 3rem;
+  max-width: 11.5rem;
+  max-height: 5.25rem;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -989,24 +1036,54 @@ section {
    -------------------------------------------------------------------------- */
 
 .crida {
-  max-width: 42rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 44rem;
   margin-inline: auto;
-  background: #f4cfa4; /* taronja suau */
+  background: linear-gradient(135deg, #f7d5aa 0%, #eebd85 100%);
   color: #3a2717;
-  border-radius: var(--radi);
-  padding: clamp(2rem, 5vw, 3.75rem);
+  border: 1px solid rgb(160 90 30 / 14%);
+  border-radius: 22px;
+  padding: clamp(2rem, 4vw, 3rem);
   text-align: center;
-  box-shadow: 0 20px 45px -28px rgb(120 70 30 / 55%);
+  box-shadow: 0 24px 55px -30px rgb(120 70 30 / 50%);
+}
+
+/* Brillo decoratiu suau a una cantonada */
+.crida::before {
+  content: "";
+  position: absolute;
+  top: -45%;
+  right: -12%;
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgb(255 255 255 / 45%), transparent 70%);
+  pointer-events: none;
+}
+
+.crida > * {
+  position: relative; /* per sobre del brillo */
+}
+
+.crida .eyebrow {
+  color: #7a4a1c;
+}
+
+.crida .eyebrow::after {
+  background: #7a4a1c;
+  margin-inline: auto;
 }
 
 .crida h2 {
   color: #2a1c10;
-  margin-bottom: 1.1rem;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  margin-bottom: 0.9rem;
 }
 
 .crida p {
   color: #4a3320;
-  max-width: 46ch;
+  font-size: 0.95rem;
+  max-width: none;
   margin-inline: auto;
 }
 
@@ -1016,7 +1093,12 @@ section {
 
 .crida .botons {
   justify-content: center;
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
+}
+
+/* La secció de la crida ocupa menys alçada */
+.crida-seccio {
+  padding-block: clamp(1rem, 0.5rem + 1.2vw, 2rem);
 }
 
 /* Llista de fets, amb filet daurat en comptes de bola */
@@ -1433,16 +1515,34 @@ section {
    -------------------------------------------------------------------------- */
 
 .peu {
-  background: var(--sorra-fonda);
+  background: #ffffff;
   border-top: 1px solid var(--vora);
   padding-block: calc(var(--buit-seccio) * 0.55) 2rem;
   font-size: 0.92rem;
 }
 
+/* Marca al footer, com a la capçalera */
+.peu .marca {
+  margin-bottom: 0.9rem;
+}
+
+.peu .tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .peu__graella {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
-  gap: 2rem;
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+}
+
+/* El bloc de marca queda una mica separat de la resta */
+@media (min-width: 54rem) {
+  .peu__graella > :first-child {
+    margin-right: 1.5rem;
+  }
 }
 
 .peu h4 {
@@ -1465,6 +1565,27 @@ section {
 .peu a {
   color: var(--text-suau);
   text-decoration: none;
+}
+
+/* Xarxes socials i WhatsApp: icona + text alineats */
+.peu .social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.peu .social a,
+.peu .wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-wrap: anywhere; /* que el correu llarg no se surti */
+}
+
+.peu .ico {
+  flex-shrink: 0;
 }
 
 .peu a:hover {

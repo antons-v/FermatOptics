@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fermatoptics.com/optica.html">
 <meta property="og:locale" content="ca_ES">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -21,7 +21,7 @@
 
 <header class="capcalera">
   <div class="contenidor capcalera__interior">
-    <a class="marca" href="index.html">Fermat <span>Òptics</span></a>
+    <a class="marca" href="index.html"><img class="marca__logo" src="public/images/fermat/icona.avif" alt="" width="160" height="160">Fermat <span>Òptics</span></a>
 
     <nav class="nav--ample" aria-label="Principal">
       <ul class="nav__llista">
@@ -123,11 +123,6 @@
             <li><strong>Fotocromàtiques</strong> que s'enfosqueixen al sol</li>
             <li><strong>Polaritzades</strong> per conduir i per l'aigua</li>
           </ul>
-          <p class="nota">
-            Les progressives no són totes iguals ni de bon tros. La diferència
-            entre una de bona i una de barata és el temps que trigues a
-            oblidar-te'n. T'ho expliquem sense lletra petita.
-          </p>
         </div>
         <div class="duo__foto">
           <img src="public/images/fermat/frames-display.avif" width="900" height="700" loading="lazy" decoding="async" alt="Muntures a Fermat Òptics">
@@ -172,22 +167,23 @@
           <div class="targeta__icona" aria-hidden="true">4</div>
           <h3>T'ajustem</h3>
           <p>
-            I quan tornis d'aquí sis mesos perquè t'han quedat balderes,
-            t'ho tornem a ajustar.
+            T'ajustem els manteniments que calgui
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="banda">
+  <section class="crida-seccio">
     <div class="contenidor">
-      <div class="encap">
+      <div class="crida">
+        <p class="eyebrow">Contacte</p>
         <h2>Vine a provar-te-les</h2>
-        <p class="plom">
-          Sense compromís i sense que ningú et miri per sobre l'espatlla.
+        <p>
+          Passa per qualsevol de les nostres botigues i emprova't amb calma
+          les muntures que t'agradin.
         </p>
-        <div class="botons" style="justify-content:center">
+        <div class="botons">
           <a class="boto boto--ple" href="contacte.html">On som</a>
         </div>
       </div>
@@ -200,7 +196,7 @@
   <div class="contenidor">
     <div class="peu__graella">
       <div>
-        <h4>Fermat Òptics</h4>
+        <a class="marca" href="index.html"><img class="marca__logo" src="public/images/fermat/icona.avif" alt="" width="160" height="160">Fermat <span>Òptics</span></a>
         <p style="color:var(--text-suau)">
           Centre òptic i auditiu a Barcelona des del 1998.
         </p>
@@ -210,7 +206,8 @@
         <address>
           Ausiàs Marc, 59<br>
           08010 Barcelona<br>
-          <a href="tel:+34932444275">932 444 275</a>
+          <a class="tel" href="tel:+34932444275"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#7f715e" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2Z"/></svg>932 444 275</a><br>
+          <a class="wa" href="https://wa.me/34649544328"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.5.05-1.13.07-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.36-.42.48-.14.14-.29.29-.12.57.16.27.72 1.19 1.55 1.93 1.07.95 1.97 1.25 2.24 1.39.27.14.43.12.59-.07.16-.19.68-.79.86-1.07.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.27.13.44.2.51.31.07.11.07.66-.17 1.3Z"/></svg>649 544 328</a>
         </address>
       </div>
       <div>
@@ -218,17 +215,15 @@
         <address>
           Còrsega, 671<br>
           08026 Barcelona<br>
-          <a href="tel:+34934562201">934 562 201</a>
+          <a class="tel" href="tel:+34934562201"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#7f715e" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2Z"/></svg>934 562 201</a><br>
+          <a class="wa" href="https://wa.me/34633726053"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.3-1.95 1.34-.5.05-1.13.07-1.82-.11-.42-.14-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.3.36-.42.48-.14.14-.29.29-.12.57.16.27.72 1.19 1.55 1.93 1.07.95 1.97 1.25 2.24 1.39.27.14.43.12.59-.07.16-.19.68-.79.86-1.07.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.27.13.44.2.51.31.07.11.07.66-.17 1.3Z"/></svg>633 726 053</a>
         </address>
       </div>
       <div>
-        <h4>Web</h4>
-        <ul>
-          <li><a href="serveis.html">Serveis</a></li>
-          <li><a href="optica.html">Òptica</a></li>
-          <li><a href="audio.html">Àudio</a></li>
-          <li><a href="contacte.html">Contacte</a></li>
-          <li><a href="https://www.instagram.com/fermatoptics/" rel="noopener">Instagram</a></li>
+        <h4>Xarxes i contacte</h4>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/fermatoptics/" rel="noopener"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#E4405F" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.89a5.95 5.95 0 1 0 0 11.9 5.95 5.95 0 0 0 0-11.9Zm0 9.82a3.87 3.87 0 1 1 0-7.74 3.87 3.87 0 0 1 0 7.74Zm6.16-9.99a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0Z"/></svg>@fermatoptics</a></li>
+          <li><a href="mailto:fermat@fermatoptics.com"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#EA4335" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.4l8 5 8-5V6H4Zm16 2.4-8 5-8-5V18h16V8.4Z"/></svg>fermat@fermatoptics.com</a></li>
         </ul>
       </div>
     </div>
