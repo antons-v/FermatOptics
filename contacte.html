@@ -52,100 +52,27 @@
 
 <main id="principal">
 
-  <section class="portada portada--interior">
+  <section class="portada portada--interior portada--ampla">
     <div class="contenidor">
       <p class="eyebrow">Contacte</p>
       <h1>Som aquí per ajudar-te</h1>
       <p class="plom">
         Truca'ns, escriu-nos per WhatsApp o passa per qualsevol de les dues
-        botigues. T'assessorem personalment.
+        botigues que tenim a Barcelona: mateix horari i mateix equip darrere.
+        Tria la que et queda més a prop i t'assessorem personalment.
       </p>
     </div>
   </section>
 
-  <!-- Formulari primer -->
-  <section class="banda">
-    <div class="contenidor">
-      <div class="encap">
-        <p class="eyebrow">Escriu-nos</p>
-        <h2>Demana hora</h2>
-        <p class="plom">
-          Deixa'ns les teves dades i et responem al més aviat possible.
-        </p>
-      </div>
-
-      <!--
-        FORMULARI — PENDENT DE CONFIGURAR
-        Cal substituir CODI-FORMSPREE per l'identificador real de Formspree.
-        Passos: crear compte a formspree.io, donar d'alta el formulari amb el
-        correu de destinació de la botiga i confirmar-lo des d'aquell correu.
-        Sense això, l'enviament no arriba enlloc.
-      -->
-      <form class="formulari"
-            action="https://formspree.io/f/CODI-FORMSPREE"
-            method="POST"
-            style="margin-inline:auto">
-
-        <div class="camp">
-          <label for="nom">Nom i cognoms</label>
-          <input type="text" id="nom" name="nom" autocomplete="name" required>
-        </div>
-
-        <div class="camp">
-          <label for="email">Correu electrònic</label>
-          <input type="email" id="email" name="email" autocomplete="email" required>
-        </div>
-
-        <div class="camp">
-          <label for="telefon">Telèfon</label>
-          <input type="tel" id="telefon" name="telefon" autocomplete="tel">
-        </div>
-
-        <div class="camp">
-          <label for="servei">Quin servei t'interessa?</label>
-          <select id="servei" name="servei" required>
-            <option value="">Tria una opció…</option>
-            <option>Revisió visual / graduació</option>
-            <option>Ulleres o muntures</option>
-            <option>Lents de contacte</option>
-            <option>Control de miopia infantil</option>
-            <option>Estudi auditiu / audiòfons</option>
-            <option>Reparació</option>
-            <option>Una altra cosa</option>
-          </select>
-        </div>
-
-        <!-- Parany antispam: les persones no el veuen, els bots l'omplen i els descartem -->
-        <div class="parany" aria-hidden="true">
-          <label for="empresa">No omplis aquest camp</label>
-          <input type="text" id="empresa" name="_gotcha" tabindex="-1" autocomplete="off">
-        </div>
-
-        <label class="consentiment">
-          <input type="checkbox" name="consentiment" required>
-          <span>
-            He llegit i accepto la
-            <a href="politica-privacitat.html">política de privacitat</a>.
-            Les meves dades s'utilitzaran únicament per respondre aquesta consulta.
-          </span>
-        </label>
-
-        <div class="botons">
-          <button class="boto boto--ple" type="submit">Envia</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Després, les botigues amb foto i informació -->
-  <section>
+  <!-- Primer les botigues: el telèfon i el WhatsApp depenen de cadascuna -->
+  <section class="seccio--arran">
     <div class="contenidor">
       <div class="graella">
 
         <div class="botiga">
           <img class="botiga__foto"
                src="public/images/fermat/botiga-ausias-marc.avif"
-               width="266" height="238" loading="lazy" decoding="async"
+               width="1200" height="900" loading="lazy" decoding="async"
                alt="Botiga de Fermat Òptics al carrer Ausiàs Marc">
           <div class="botiga__cos">
             <h3>Ausiàs Marc</h3>
@@ -176,7 +103,7 @@
         <div class="botiga">
           <img class="botiga__foto"
                src="public/images/fermat/botiga-corsega.avif"
-               width="384" height="180" loading="lazy" decoding="async"
+               width="1200" height="675" loading="lazy" decoding="async"
                alt="Botiga de Fermat Òptics al carrer Còrsega">
           <div class="botiga__cos">
             <h3>Còrsega</h3>
@@ -208,17 +135,42 @@
     </div>
   </section>
 
-  <section>
+  <!-- Maneres de contactar -->
+  <section class="banda">
     <div class="contenidor">
       <div class="encap">
-        <h2>Prefereixes trucar?</h2>
+        <p class="eyebrow">Contacte</p>
+        <h2>També ens pots escriure</h2>
         <p class="plom">
-          De vegades és més ràpid. Tria la botiga que et queda més a prop.
+          El telèfon i el WhatsApp els trobaràs a cada botiga, aquí a dalt. Si
+          ho prefereixes, escriu-nos un correu o segueix-nos a Instagram.
         </p>
-        <div class="botons" style="justify-content:center">
-          <a class="boto boto--buit" href="tel:+34932444275">Ausiàs Marc · 932 444 275</a>
-          <a class="boto boto--buit" href="tel:+34934562201">Còrsega · 934 562 201</a>
-        </div>
+      </div>
+
+      <div class="graella graella--vies">
+
+        <article class="targeta contacte-via">
+          <div class="targeta__icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#EA4335" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.4l8 5 8-5V6H4Zm16 2.4-8 5-8-5V18h16V8.4Z"/></svg>
+          </div>
+          <h3>Ens vols enviar un correu?</h3>
+          <p>Per a consultes que necessiten més explicació o documentació.</p>
+          <ul class="contacte-via__llista">
+            <li><a href="mailto:fermat@fermatoptics.com">fermat@fermatoptics.com</a></li>
+          </ul>
+        </article>
+
+        <article class="targeta contacte-via">
+          <div class="targeta__icona" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#E4405F" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.89a5.95 5.95 0 1 0 0 11.9 5.95 5.95 0 0 0 0-11.9Zm0 9.82a3.87 3.87 0 1 1 0-7.74 3.87 3.87 0 0 1 0 7.74Zm6.16-9.99a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0Z"/></svg>
+          </div>
+          <h3>Segueix-nos a Instagram</h3>
+          <p>Novetats, muntures acabades d'arribar i el dia a dia de les botigues.</p>
+          <ul class="contacte-via__llista">
+            <li><a href="https://www.instagram.com/fermatoptics/" rel="noopener">@fermatoptics</a></li>
+          </ul>
+        </article>
+
       </div>
     </div>
   </section>

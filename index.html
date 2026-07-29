@@ -154,22 +154,21 @@
 
 <main id="principal">
 
-  <!-- HERO ROTATORI — fosa encadenada en CSS pur, sense JavaScript.
-       Cada foto es veu 15 s. Les tres imatges carreguen d'entrada perquè
-       totes es veuen a la part superior. -->
-  <section class="hero" aria-label="Fermat Òptics">
+  <!-- BANNER PRINCIPAL — tres imatges que es fonen cada 10 s (CSS pur).
+       Totes tres carreguen d'entrada perquè es veuen a dalt de tot. -->
+  <section class="hero hero--banner" aria-label="Fermat Òptics">
     <img class="hero__slide"
-         src="public/images/fermat/frames-display.avif"
-         sizes="100vw" width="1745" height="500"
+         src="public/images/fermat/banner-principal.avif"
+         sizes="100vw" width="1382" height="396"
          fetchpriority="high" decoding="async"
-         alt="Muntures a Fermat Òptics">
+         alt="Fermat Òptics · Audioprotesistes">
     <img class="hero__slide"
-         src="public/images/fermat/ulleres-metall.avif"
-         sizes="100vw" width="1897" height="606"
+         src="public/images/fermat/muntures-expositor.avif"
+         sizes="100vw" width="1745" height="500"
          decoding="async" alt="">
     <img class="hero__slide"
-         src="public/images/fermat/dona-llegint.avif"
-         sizes="100vw" width="949" height="681"
+         src="public/images/fermat/foropter.avif"
+         sizes="100vw" width="1745" height="500"
          decoding="async" alt="">
   </section>
 
@@ -202,11 +201,25 @@
     </div>
   </section>
 
-  <!-- Franja de foto alargada -->
-  <section class="faixa-foto" aria-hidden="true">
-    <img src="public/images/fermat/fermat-deco.avif"
+  <!-- Franja de cartells: canvia sola cada 10 s i es pot passar amb la fletxa.
+       Sense JavaScript la rotació la fa el CSS; el JS només afegeix la fletxa
+       i reinicia el comptador quan hi cliques. -->
+  <section class="faixa-foto faixa-slider" aria-label="Promocions">
+    <img class="faixa-slider__foto" src="public/images/fermat/cartell-rebaixes-graduat.avif"
          sizes="100vw" width="1897" height="594"
-         loading="lazy" decoding="async" alt="">
+         loading="lazy" decoding="async" alt="Rebaixes: fins al 30% en ulleres de graduat">
+    <img class="faixa-slider__foto" src="public/images/fermat/cartell-rebaixes-sol.avif"
+         sizes="100vw" width="1897" height="594"
+         loading="lazy" decoding="async" alt="Rebaixes: 30% en ulleres de sol">
+    <img class="faixa-slider__foto" src="public/images/fermat/cartell-rebaixes-lents.avif"
+         sizes="100vw" width="1897" height="594"
+         loading="lazy" decoding="async" alt="Rebaixes: fins al 50% en lents òptiques">
+    <button class="faixa-slider__fletxa faixa-slider__fletxa--enrere" type="button" aria-label="Cartell anterior">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0Z"/></svg>
+    </button>
+    <button class="faixa-slider__fletxa faixa-slider__fletxa--endavant" type="button" aria-label="Cartell següent">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9.3 5.3a1 1 0 0 0 0 1.4l5.3 5.3-5.3 5.3a1 1 0 1 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z"/></svg>
+    </button>
   </section>
 
   <!-- Banda taronja: rejilla amb foto (esquerra) i text (dreta) -->
@@ -214,7 +227,7 @@
     <div class="contenidor">
       <div class="duo">
         <div class="duo__foto">
-          <img src="public/images/fermat/benvinguts.avif"
+          <img src="public/images/fermat/cartell-audiofons.avif"
                sizes="(max-width: 54rem) 92vw, 30rem"
                width="426" height="532" loading="lazy" decoding="async"
                alt="Benvinguts a Fermat Òptics">
@@ -394,6 +407,51 @@
     </div>
   </div>
 </footer>
+
+<!-- Franja de cartells: canvi automàtic cada 10 s i fletxa per passar-ne un.
+     Si no hi ha JavaScript, la rotació la continua fent el CSS. -->
+<script>
+(function () {
+  var faixa = document.querySelector('.faixa-slider');
+  if (!faixa) return;
+
+  var fotos = faixa.querySelectorAll('.faixa-slider__foto');
+  var enrere = faixa.querySelector('.faixa-slider__fletxa--enrere');
+  var endavant = faixa.querySelector('.faixa-slider__fletxa--endavant');
+  if (fotos.length < 2 || !enrere || !endavant) return;
+
+  var actual = 0;
+  var comptador;
+  var senseMoviment = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  faixa.setAttribute('data-js', '');
+  fotos[0].classList.add('es-veu');
+
+  function mostra(i) {
+    fotos[actual].classList.remove('es-veu');
+    actual = (i + fotos.length) % fotos.length;
+    fotos[actual].classList.add('es-veu');
+  }
+
+  function arrenca() {
+    clearInterval(comptador);
+    if (senseMoviment) return;
+    comptador = setInterval(function () { mostra(actual + 1); }, 10000);
+  }
+
+  enrere.addEventListener('click', function () {
+    mostra(actual - 1);
+    arrenca();
+  });
+
+  endavant.addEventListener('click', function () {
+    mostra(actual + 1);
+    arrenca();
+  });
+
+  arrenca();
+})();
+</script>
 
 </body>
 </html>

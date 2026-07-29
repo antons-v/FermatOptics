@@ -185,6 +185,12 @@ a:hover {
   max-width: 52ch;
 }
 
+/* Aire entre paràgrafs seguits i després d'una llista */
+.plom + .plom,
+.llista-fets + .plom {
+  margin-top: 0.9rem;
+}
+
 /* --------------------------------------------------------------------------
    4. Layout
    -------------------------------------------------------------------------- */
@@ -432,6 +438,74 @@ section {
 .hero--una .hero__slide {
   animation: none;
   opacity: 1;
+}
+
+/* Banner principal de l'Inici: manté la proporció de la imatge a totes les
+   amplades perquè el logo no es talli, i canvia de foto cada 10 s. Va després
+   del @media de dalt perquè ha de guanyar-li la proporció 32/9. */
+.hero--banner {
+  --slide: 10s;
+  aspect-ratio: 1382 / 396;
+  max-height: 62svh;
+}
+
+/* --------------------------------------------------------------------------
+   Títol a sobre del hero (pàgines interiors)
+   El degradat fosc és el que garanteix que el text es llegeixi sigui quina
+   sigui la foto: no depèn de la imatge concreta.
+   -------------------------------------------------------------------------- */
+
+.hero__caixa {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  background:
+    radial-gradient(
+      70% 60% at 50% 52%,
+      rgb(20 13 6 / 45%),
+      transparent 75%
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(20 13 6 / 52%),
+      rgb(20 13 6 / 38%) 50%,
+      rgb(20 13 6 / 60%)
+    );
+}
+
+/* Amb títol i subtítol a sobre, el hero necessita més alçada que el normal */
+.hero--titol {
+  aspect-ratio: auto;
+  min-height: clamp(24rem, 62svh, 34rem);
+  max-height: none;
+}
+
+.hero__caixa h1 {
+  color: #fff;
+  max-width: 18ch;
+  margin-inline: auto;
+  font-size: clamp(2.4rem, 1.5rem + 4.4vw, 4.5rem);
+  text-shadow: 0 2px 22px rgb(0 0 0 / 65%), 0 1px 3px rgb(0 0 0 / 35%);
+}
+
+.hero__subtitol {
+  color: #fff;
+  max-width: 72ch;
+  margin: var(--pas) auto 0;
+  font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem);
+  line-height: 1.6;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 60%), 0 1px 3px rgb(0 0 0 / 35%);
+}
+
+.hero__caixa .eyebrow {
+  color: #fff;
+  text-shadow: 0 1px 10px rgb(0 0 0 / 45%);
+}
+
+.hero__caixa .eyebrow::after {
+  margin-inline: auto;
 }
 
 /* Caixa taronja translúcida que se solapa amb el hero per la dreta.
@@ -741,6 +815,22 @@ section {
   justify-content: center;
 }
 
+/* Portada amb text ample i petit, i poc aire a sota: pensada per quan just
+   després hi ha contingut que ha de quedar a prop (Contacte). */
+.portada--ampla {
+  padding-block: clamp(2.25rem, 1.8rem + 2vw, 3.5rem) clamp(1.25rem, 1rem + 1vw, 2rem);
+}
+
+.portada--ampla .plom {
+  max-width: 76ch;
+  font-size: 0.95rem;
+}
+
+/* Secció que arrenca just sota la portada, sense el buit habitual */
+.seccio--arran {
+  padding-top: clamp(0.5rem, 0.25rem + 1vw, 1.25rem);
+}
+
 /* Intro d'Inici: títol i text més petits que la resta de la web */
 .portada--intro h1 {
   font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.25rem);
@@ -806,6 +896,80 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Franja de cartells rotatoris (Inici)
+   Per defecte la rotació la fa el CSS: 3 cartells, 10 s cadascun. Si hi ha
+   JavaScript, el <section> rep data-js, el CSS deixa de animar i el control
+   passa a la classe .es-veu (així la fletxa pot canviar de cartell).
+   -------------------------------------------------------------------------- */
+
+.faixa-slider {
+  position: relative;
+}
+
+.faixa-slider__foto {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: faixaFosa 30s linear infinite; /* 3 cartells x 10 s */
+}
+
+.faixa-slider__foto:nth-of-type(1) { animation-delay: 0s; }
+.faixa-slider__foto:nth-of-type(2) { animation-delay: 10s; }
+.faixa-slider__foto:nth-of-type(3) { animation-delay: 20s; }
+
+@keyframes faixaFosa {
+  0%      { opacity: 0; }
+  3%      { opacity: 1; }
+  33.333% { opacity: 1; }
+  36.333% { opacity: 0; }
+  100%    { opacity: 0; }
+}
+
+/* Mode amb JavaScript: mana la classe, no l'animació */
+.faixa-slider[data-js] .faixa-slider__foto {
+  animation: none;
+  transition: opacity 0.6s ease;
+}
+
+.faixa-slider[data-js] .faixa-slider__foto.es-veu {
+  opacity: 1;
+}
+
+/* Fletxes per passar de cartell (només tenen sentit amb JS) */
+.faixa-slider__fletxa {
+  display: none;
+}
+
+.faixa-slider[data-js] .faixa-slider__fletxa {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 50%;
+  background: rgb(31 20 9 / 30%);
+  color: #fff;
+  cursor: pointer;
+}
+
+.faixa-slider__fletxa--enrere { left: clamp(0.6rem, 2vw, 1.5rem); }
+.faixa-slider__fletxa--endavant { right: clamp(0.6rem, 2vw, 1.5rem); }
+
+.faixa-slider__fletxa:hover {
+  background: rgb(31 20 9 / 50%);
+}
+
+/* Qui ha demanat menys moviment veu només el primer cartell */
+@media (prefers-reduced-motion: reduce) {
+  .faixa-slider:not([data-js]) .faixa-slider__foto { animation: none; }
+  .faixa-slider:not([data-js]) .faixa-slider__foto:nth-of-type(1) { opacity: 1; }
 }
 
 /* Banda taronja: foto a l'esquerra, text a la dreta */
@@ -954,7 +1118,7 @@ section {
 
 /* Foto amb efecte fix */
 .mosaic__foto {
-  background-image: url("../public/images/fermat/suns-out.avif");
+  background-image: url("../public/images/fermat/cartell-ulleres-sol.avif");
   background-size: 60vw; /* poc més gran que la cel·la: zoom mínim */
   background-position: right center; /* alineada a la cel·la (a dalt a la dreta) */
   background-repeat: no-repeat;
@@ -1144,6 +1308,106 @@ section {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Vies de contacte (targetes de la pàgina de Contacte)
+   -------------------------------------------------------------------------- */
+
+/* Dues targetes per fila: quatre vies queden 2+2, no 3+1.
+   Doble classe per guanyar a .graella, que es defineix més avall. */
+.graella.graella--vies {
+  grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr));
+}
+
+.contacte-via__llista {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+  border-top: 1px solid var(--vora);
+  padding-top: 1.1rem;
+}
+
+.contacte-via__llista li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.contacte-via__llista span {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-suau);
+}
+
+.contacte-via__llista a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contacte-via__llista a:hover {
+  text-decoration: underline;
+}
+
+/* Segon bloc foto+text dins de la mateixa banda */
+.duo--seguit {
+  margin-top: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+}
+
+/* Segon encapçalament dins d'una mateixa columna de text */
+.eyebrow--separat {
+  margin-top: calc(var(--pas) * 1.8);
+}
+
+/* Logo de marca centrat al final d'una secció */
+.marca-central {
+  display: block;
+  width: auto;
+  max-width: 12rem;
+  height: auto;
+  margin: calc(var(--pas) * 2.2) auto 0;
+}
+
+/* Foto amb forma d'arc centrada sota el text d'una secció */
+.foto-arc {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin: calc(var(--pas) * 1.6) auto 0;
+}
+
+.botons--centrats {
+  justify-content: center;
+  margin-top: calc(var(--pas) * 1.4);
+}
+
+/* Fotos sense marc, tal com són: les retallades en forma d'arc (--arc) i les
+   fotos de producte o de detall (--net). Es mostren senceres, sense caixa ni
+   retall a 4/3. */
+.duo__foto--net,
+.duo__foto--arc {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  justify-self: center;
+}
+
+.duo__foto--net img,
+.duo__foto--arc img {
+  width: 100%;
+  max-width: 24rem;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  display: block;
+  margin-inline: auto;
 }
 
 /* Inverteix l'ordre en pantalla gran, mantenint l'ordre lògic al codi */
