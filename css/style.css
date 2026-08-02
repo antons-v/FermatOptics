@@ -558,6 +558,24 @@ section {
   box-shadow: var(--ombra);
 }
 
+/* Variant a sang: ocupa tota l'amplada de la pantalla i és més baixa.
+   padding-block: 0 perquè, sent un <section>, no hi hagi el buit habitual. */
+.video-rect--sang {
+  width: 100%;
+  aspect-ratio: 1897 / 500;
+  padding-block: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--sorra-fonda);
+}
+
+@media (max-width: 48rem) {
+  .video-rect--sang {
+    aspect-ratio: 16 / 9;
+  }
+}
+
 .video-rect img,
 .video-rect video {
   width: 100%;
@@ -569,6 +587,58 @@ section {
    Serveis en zigzag amb aparença de línia del temps
    Alterna foto/text i té una línia central amb un node per cada servei.
    -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   Full taronja: la llista de serveis presentada com un document
+   -------------------------------------------------------------------------- */
+
+.full-taronja {
+  position: relative;
+  z-index: 1;
+  /* Puja i se solapa amb el vídeo de sobre */
+  margin-top: calc(clamp(2rem, 6vw, 5.5rem) * -1);
+  /* Taronja translúcid: es veu el que hi ha a sota */
+  background: rgb(240 184 132 / 72%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 8px; /* cantonades gairebé rectes, com un full */
+  padding: clamp(1.5rem, 0.8rem + 3vw, 3.25rem) clamp(1rem, 0.4rem + 3vw, 2.75rem);
+  box-shadow: 0 2px 6px rgb(42 28 18 / 10%), 0 34px 70px -40px rgb(42 28 18 / 55%);
+  color: #2a1c12;
+}
+
+.full-taronja .timeline {
+  margin-top: 0;
+}
+
+/* Sobre el taronja, la línia i els nodes han de ser clars, no de color vora */
+.full-taronja .timeline::before {
+  background: linear-gradient(
+    transparent,
+    rgb(255 255 255 / 55%) 8%,
+    rgb(255 255 255 / 55%) 92%,
+    transparent
+  );
+}
+
+.full-taronja .tl-item::before {
+  background: var(--sorra);
+  box-shadow: 0 0 0 5px rgb(240 184 132 / 90%);
+}
+
+.full-taronja .tl-text h2 {
+  color: #1f1409;
+}
+
+.full-taronja .tl-text .plom {
+  color: #4a3220;
+}
+
+.full-taronja .tl-foto {
+  background: rgb(255 255 255 / 45%);
+  border-color: rgb(255 255 255 / 60%);
+}
 
 .timeline {
   list-style: none;
@@ -1137,6 +1207,14 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* El vídeo és 16/9 i la cel·la, quadrada: amb "cover" se'n retallaria mig
+   enquadrament i semblaria que hi ha zoom. Amb "contain" es veu sencer i les
+   franges de sobre i sota queden del color de fons del mosaic. */
+.mosaic__video video {
+  object-fit: contain;
+  background: var(--sorra-fonda);
 }
 
 /* Botó de reproducció sobre la mostra del vídeo */

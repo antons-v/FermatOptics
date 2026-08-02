@@ -76,24 +76,23 @@
     </div>
   </section>
 
-  <!-- Vídeo rectangular (de moment, foto de mostra amb botó de reproducció) -->
-  <section>
-    <div class="contenidor">
-      <div class="video-rect">
-        <!-- Quan hi hagi el vídeo, substituir aquest <img> per:
-             <video src="..." poster="..." muted loop playsinline controls></video> -->
-        <img src="public/images/fermat/exploracio.avif"
-             sizes="(max-width: 72rem) 92vw, 68rem"
-             width="1897" height="474" loading="lazy" decoding="async"
-             alt="Mostra del vídeo dels nostres serveis">
-        <span class="mosaic__play" aria-hidden="true"></span>
-      </div>
-    </div>
+  <!-- Vídeo a sang: ocupa tota l'amplada de la pantalla -->
+  <section class="video-rect video-rect--sang">
+    <!-- Vídeo curt en bucle, sense so. El tall del bucle porta una fosa de
+         0,8 s perquè el reinici no es noti. -->
+    <video class="mosaic__clip" autoplay muted loop playsinline
+           poster="public/images/fermat/exploracio-visual-poster.avif"
+           width="1600" height="844"
+           aria-label="Exploració visual a Fermat Òptics">
+      <source src="public/images/fermat/exploracio-visual.webm" type="video/webm">
+      <source src="public/images/fermat/exploracio-visual.mp4" type="video/mp4">
+    </video>
   </section>
 
-  <!-- Serveis en zigzag (alterna esquerra/dreta amb línia central i nodes) -->
-  <section>
+  <!-- Serveis en zigzag dins d'un full taronja, com un document -->
+  <section class="seccio--arran">
     <div class="contenidor">
+      <div class="full-taronja">
       <ol class="timeline">
 
         <li class="tl-item">
@@ -171,6 +170,7 @@
         </li>
 
       </ol>
+      </div>
     </div>
   </section>
 
@@ -272,6 +272,15 @@
     </div>
   </div>
 </footer>
+
+<!-- Qui ha demanat menys moviment al sistema veu el fotograma fix, no el bucle -->
+<script>
+(function () {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var clip = document.querySelector('.mosaic__clip');
+  if (clip) { clip.removeAttribute('autoplay'); clip.pause(); }
+})();
+</script>
 
 </body>
 </html>

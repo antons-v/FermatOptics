@@ -321,10 +321,16 @@
 
     <!-- (2,1) vídeo (de moment, foto de mostra amb botó de reproducció) -->
     <div class="mosaic__cel mosaic__video">
-      <!-- Quan hi hagi el vídeo, substituir aquest <img> per:
-           <video src="..." poster="..." muted loop playsinline controls></video> -->
-      <img src="public/images/fermat/dona-llegint.avif" width="949" height="681" loading="lazy" decoding="async" alt="Clienta amb ulleres de Fermat Òptics">
-      <span class="mosaic__play" aria-hidden="true"></span>
+      <!-- Vídeo curt en bucle, sense so. El tall del bucle porta una fosa de
+           0,7 s, per això el salt gairebé no es nota. El poster és el mateix
+           fotograma, així no hi ha parpelleig mentre carrega. -->
+      <video class="mosaic__clip" autoplay muted loop playsinline
+             poster="public/images/fermat/noia-llegint-poster.avif"
+             width="1280" height="720"
+             aria-label="Clienta llegint amb ulleres de Fermat Òptics">
+        <source src="public/images/fermat/noia-llegint.webm" type="video/webm">
+        <source src="public/images/fermat/noia-llegint.mp4" type="video/mp4">
+      </video>
     </div>
 
     <!-- (2,2) -->
@@ -411,6 +417,13 @@
 <!-- Franja de cartells: canvi automàtic cada 10 s i fletxa per passar-ne un.
      Si no hi ha JavaScript, la rotació la continua fent el CSS. -->
 <script>
+/* Qui ha demanat menys moviment al sistema veu el fotograma fix, no el bucle */
+(function () {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var clip = document.querySelector('.mosaic__clip');
+  if (clip) { clip.removeAttribute('autoplay'); clip.pause(); }
+})();
+
 (function () {
   var faixa = document.querySelector('.faixa-slider');
   if (!faixa) return;
