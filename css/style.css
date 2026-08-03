@@ -1,6 +1,8 @@
 /* ==========================================================================
    Fermat Òptics — full stylesheet
-   Sense frameworks. Sense fonts externes. Sense JavaScript.
+   Sense frameworks ni fonts externes. L'únic JavaScript de la web són dues
+   funcions curtes dins d'index.html i serveis.html (carrusel de cartells i
+   aturar els vídeos a qui ha demanat menys moviment).
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -589,6 +591,43 @@ section {
    -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
+   Passos numerats (Com ho fem)
+   Sense caixes: un filet a dalt, el número en serif daurat i el text a sota.
+   -------------------------------------------------------------------------- */
+
+.passos {
+  list-style: none;
+  padding: 0;
+  margin-top: calc(var(--pas) * 1.8);
+  display: grid;
+  gap: clamp(1.75rem, 1rem + 2.5vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+}
+
+.pas {
+  border-top: 1px solid var(--vora);
+  padding-top: 1.1rem;
+}
+
+.pas__num {
+  display: block;
+  font-family: var(--font-titol);
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--daurat);
+  margin-bottom: 0.75rem;
+}
+
+.pas h3 {
+  margin-bottom: 0.4rem;
+}
+
+.pas p {
+  color: var(--text-suau);
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
    Full taronja: la llista de serveis presentada com un document
    -------------------------------------------------------------------------- */
 
@@ -791,17 +830,6 @@ section {
     linear-gradient(var(--sorra-fonda), var(--fons));
 }
 
-.portada__duo {
-  display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-@media (min-width: 54rem) {
-  .portada__duo {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
 .portada h1 {
   max-width: 14ch;
@@ -809,20 +837,6 @@ section {
 
 .portada .plom {
   margin-top: var(--pas);
-}
-
-/* La foto surt de la caixa per l'esquerra: dona aire editorial */
-.portada__foto {
-  border-radius: var(--radi);
-  overflow: hidden;
-  border: 1px solid var(--vora);
-  box-shadow: 0 2px 4px rgb(33 29 24 / 5%), 0 24px 60px -30px rgb(33 29 24 / 35%);
-}
-
-.portada__foto img {
-  width: 100%;
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
 }
 
 .eyebrow {
@@ -843,6 +857,23 @@ section {
   height: 2px;
   background: var(--daurat);
   margin-top: 0.7rem;
+}
+
+/* Variant alineada a l'esquerra del mateix encapçalament */
+.encap.encap--esquerra {
+  text-align: left;
+  margin-inline: 0;
+  max-width: none;
+}
+
+.encap--esquerra .plom,
+.encap--esquerra .eyebrow::after {
+  margin-inline: 0;
+}
+
+/* Sense límit d'amplada: la frase d'entrada cap en una sola línia */
+.encap--esquerra .plom {
+  max-width: none;
 }
 
 /* Encapçalament de secció centrat */
@@ -1092,55 +1123,6 @@ section {
   background: #fff;
 }
 
-/* --------------------------------------------------------------------------
-   Cita amb foto fixa (efecte parallax) a l'esquerra i text a la dreta.
-   background-attachment: fixed fa que la foto es quedi quieta mentre fas
-   scroll. Al mòbil es desactiva (iOS no el suporta i faria salts).
-   -------------------------------------------------------------------------- */
-
-.cita-fix {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 60svh;
-}
-
-.cita-fix__foto {
-  background-image: url("../public/images/fermat/exploracio.avif");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* la foto es queda fixa en fer scroll */
-}
-
-.cita-fix__text {
-  display: grid;
-  place-items: center;
-  padding: clamp(2rem, 5vw, 5rem);
-  background: var(--sorra-fonda);
-}
-
-.cita-fix__text blockquote {
-  margin: 0;
-  font-family: var(--font-titol);
-  font-optical-sizing: auto;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: clamp(1.15rem, 0.85rem + 1.4vw, 1.85rem);
-  line-height: 1.45;
-  text-align: center;
-  text-wrap: balance;
-  max-width: 22ch;
-  color: var(--text);
-}
-
-@media (max-width: 48rem) {
-  .cita-fix {
-    grid-template-columns: 1fr; /* s'apila: foto a dalt, text a baix */
-  }
-  .cita-fix__foto {
-    min-height: 45svh;
-    background-attachment: scroll; /* al mòbil, sense efecte fix */
-  }
-}
 
 /* --------------------------------------------------------------------------
    Mosaic 2x2 (Inici): cita · foto-parallax / vídeo · cita
@@ -1152,8 +1134,10 @@ section {
   padding-block: 0; /* a sang: sense el marge gran de <section> */
 }
 
+/* Cel·les una mica menys altes que un quadrat: així el vídeo (16/9) hi cap
+   gairebé sencer i quasi no queden franges de fons a sobre i a sota. */
 .mosaic__cel {
-  aspect-ratio: 1; /* cada cel·la és un quadrat */
+  aspect-ratio: 3 / 2;
 }
 
 /* Cel·les de text */
@@ -1209,37 +1193,12 @@ section {
   object-fit: cover;
 }
 
-/* El vídeo és 16/9 i la cel·la, quadrada: amb "cover" se'n retallaria mig
-   enquadrament i semblaria que hi ha zoom. Amb "contain" es veu sencer i les
-   franges de sobre i sota queden del color de fons del mosaic. */
+/* Ara que la cel·la és 3/2, el vídeo (16/9) omple tot l'espai amb un retall
+   petit als laterals (~16%): prou per no deixar franges i sense que sembli
+   que està ampliat. */
 .mosaic__video video {
-  object-fit: contain;
+  object-fit: cover;
   background: var(--sorra-fonda);
-}
-
-/* Botó de reproducció sobre la mostra del vídeo */
-.mosaic__play {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 50%;
-  background: rgb(255 255 255 / 85%);
-  box-shadow: 0 8px 24px -8px rgb(0 0 0 / 45%);
-}
-
-.mosaic__play::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0.8rem 0 0.8rem 1.3rem;
-  border-color: transparent transparent transparent var(--taupe-fosc);
-  transform: translateX(2px);
 }
 
 /* Mòbil: s'apila en una columna i la foto perd l'efecte fix */
@@ -1432,43 +1391,34 @@ section {
   text-decoration: underline;
 }
 
-/* Segon bloc foto+text dins de la mateixa banda */
-.duo--seguit {
-  margin-top: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+
+/* Duo amb les dues columnes de la mateixa alçada: la foto acompanya una
+   columna de targetes i s'estira fins on arriben. */
+.duo--estirat {
+  align-items: stretch;
 }
 
-/* Segon encapçalament dins d'una mateixa columna de text */
-.eyebrow--separat {
-  margin-top: calc(var(--pas) * 1.8);
+.duo__foto--alt {
+  height: 100%;
 }
 
-/* Logo de marca centrat al final d'una secció */
-.marca-central {
-  display: block;
-  width: auto;
-  max-width: 12rem;
-  height: auto;
-  margin: calc(var(--pas) * 2.2) auto 0;
-}
-
-/* Foto amb forma d'arc centrada sota el text d'una secció */
-.foto-arc {
-  display: block;
+.duo__foto--alt img {
   width: 100%;
-  max-width: 22rem;
-  height: auto;
-  margin: calc(var(--pas) * 1.6) auto 0;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
 }
 
-.botons--centrats {
-  justify-content: center;
-  margin-top: calc(var(--pas) * 1.4);
+/* Targetes en una sola columna (quan van al costat d'una foto) */
+.graella.graella--una {
+  grid-template-columns: 1fr;
+  margin-top: 0;
+  align-content: start;
 }
 
 /* Fotos sense marc, tal com són: les retallades en forma d'arc (--arc) i les
    fotos de producte o de detall (--net). Es mostren senceres, sense caixa ni
    retall a 4/3. */
-.duo__foto--net,
 .duo__foto--arc {
   border: 0;
   border-radius: 0;
@@ -1477,7 +1427,6 @@ section {
   justify-self: center;
 }
 
-.duo__foto--net img,
 .duo__foto--arc img {
   width: 100%;
   max-width: 24rem;
@@ -1678,60 +1627,12 @@ section {
 }
 
 /* --------------------------------------------------------------------------
-   9. Galeria lliscant  (scroll-snap: 0 JS, 0 consum en repòs)
-   -------------------------------------------------------------------------- */
-
-.galeria {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 1.25rem;
-  padding-block: 0.5rem 1.5rem;
-  margin-top: calc(var(--pas) * 1.6);
-  scrollbar-width: thin;
-  overscroll-behavior-x: contain;
-}
-
-.galeria > * {
-  flex: 0 0 min(22rem, 78%);
-  scroll-snap-align: center;
-  border-radius: var(--radi);
-  overflow: hidden;
-  border: 1px solid var(--vora);
-  background: var(--superficie);
-}
-
-.galeria img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.galeria figcaption {
-  padding: 0.9rem 1.1rem;
-  font-size: 0.9rem;
-  color: var(--text-suau);
-}
-
-/* --------------------------------------------------------------------------
-   10. Bandes i cites
+   9. Bandes i cites
    -------------------------------------------------------------------------- */
 
 .banda {
   background: var(--sorra-fonda);
   border-block: 1px solid var(--vora);
-}
-
-.cita {
-  font-family: var(--font-titol);
-  font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem);
-  line-height: 1.35;
-  text-align: center;
-  max-width: 30ch;
-  margin-inline: auto;
-  text-wrap: balance;
-  color: var(--text);
 }
 
 .duo {
@@ -1742,7 +1643,7 @@ section {
 }
 
 /* --------------------------------------------------------------------------
-   11. Botigues
+   10. Botigues
    -------------------------------------------------------------------------- */
 
 .botiga {
@@ -1786,74 +1687,9 @@ section {
   margin: 0;
 }
 
-/* --------------------------------------------------------------------------
-   12. Formulari
-   -------------------------------------------------------------------------- */
-
-.formulari {
-  display: grid;
-  gap: 1.1rem;
-  max-width: 34rem;
-}
-
-.camp {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.camp label {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.camp input,
-.camp select,
-.camp textarea {
-  padding: 0.75rem 0.9rem;
-  border: 1.5px solid var(--vora);
-  border-radius: 10px;
-  background: var(--superficie);
-  transition: border-color 0.15s;
-}
-
-.camp input:focus,
-.camp select:focus,
-.camp textarea:focus {
-  border-color: var(--accent);
-}
-
-.camp textarea {
-  min-height: 7rem;
-  resize: vertical;
-}
-
-.consentiment {
-  display: flex;
-  gap: 0.7rem;
-  align-items: start;
-  font-size: 0.88rem;
-  color: var(--text-suau);
-}
-
-.consentiment input {
-  margin-top: 0.25rem;
-  flex-shrink: 0;
-  width: 1.05rem;
-  height: 1.05rem;
-  accent-color: var(--accent);
-}
-
-/* Parany antispam: invisible per a persones, temptador per a bots */
-.parany {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
 
 /* --------------------------------------------------------------------------
-   13. Peu
+   11. Peu
    -------------------------------------------------------------------------- */
 
 .peu {
@@ -1866,6 +1702,11 @@ section {
 /* Marca al footer, com a la capçalera */
 .peu .marca {
   margin-bottom: 0.9rem;
+}
+
+/* Frase sota la marca del peu */
+.peu__lema {
+  color: var(--text-suau);
 }
 
 .peu .tel {
@@ -1951,4 +1792,130 @@ section {
   justify-content: space-between;
   color: var(--text-suau);
   font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. Pàgina d'Àudio
+   Segueix el disseny de la web de referència: banda de color a la portada,
+   títols en versaleta daurada amb la primera lletra gran, text justificat i
+   fotos sense marc. Tot va dins de .pagina-audio perquè no afecti la resta.
+   -------------------------------------------------------------------------- */
+
+.pagina-audio {
+  --au-daurat: #eab164;
+  --au-taronja: #ef9524;
+  --au-tan: #f4d8b1;
+  --au-rosa: #f5e6e3;
+  --au-filet: #f2cd9c;
+  --au-text: #45464d;
+}
+
+.au-bloc {
+  padding-block: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+}
+
+.au-bloc--rosa {
+  background: var(--au-rosa);
+}
+
+.au-duo {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+  align-items: start;
+}
+
+.au-duo--invers {
+  grid-template-columns: 1fr 1.45fr;
+}
+
+.au-duo--seguit {
+  margin-top: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
+}
+
+@media (max-width: 48rem) {
+  .au-duo,
+  .au-duo--invers {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Títol en versaleta amb la primera lletra gran */
+.au-titol {
+  color: var(--au-daurat);
+  font-family: var(--font-titol);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.1rem, 0.85rem + 1.1vw, 1.6rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.au-titol::first-letter {
+  font-size: 2.1em;
+  line-height: 0.6;
+}
+
+.au-titol:not(:first-child) {
+  margin-top: clamp(2rem, 1.4rem + 2vw, 3.25rem);
+}
+
+.au-bloc p {
+  max-width: none; /* el text omple la seva columna, com a la referència */
+  color: var(--au-text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.au-bloc p + p {
+  margin-top: 1rem;
+}
+
+/* Fotos planes: sense marc, sense ombra i sense cantonades arrodonides */
+.au-foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Filet daurat que separa els blocs */
+.au-filet {
+  width: min(68rem, 92%);
+  margin: clamp(2.5rem, 1.8rem + 3vw, 4.5rem) auto 0;
+  border: 0;
+  border-top: 1px solid var(--au-filet);
+}
+
+.au-marca {
+  display: block;
+  width: auto;
+  max-width: 11rem;
+  height: auto;
+  margin: clamp(2.5rem, 1.8rem + 3vw, 4rem) auto 0;
+}
+
+/* Crida final en forma de píndola */
+.au-bloc .au-crida {
+  max-width: none; /* si no, hereta el límit de 62ch de <p> */
+  /* guanya el text-align: justify de .au-bloc p, que és més específic */
+  text-align: center;
+  margin-top: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+}
+
+.au-crida a {
+  display: inline-block;
+  background: #fbeede;
+  color: var(--au-taronja);
+  font-family: var(--font-titol);
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.15rem);
+  text-decoration: none;
+  padding: 0.85rem 2.25rem;
+  border-radius: 999px;
+}
+
+.au-crida a:hover {
+  background: #f7e2c8;
 }

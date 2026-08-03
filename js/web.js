@@ -1,0 +1,61 @@
+/* Fermat Òptics — l'únic JavaScript de la web.
+   Dues coses, totes dues opcionals: si el fitxer no carrega, la pàgina
+   segueix funcionant igual (el carrusel el mou el CSS i els vídeos van sols).
+   Es carrega amb defer des d'index.html i serveis.html. */
+
+(function () {
+  'use strict';
+
+  var senseMoviment = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1. Qui ha demanat menys moviment al sistema veu el fotograma fix
+        en comptes del vídeo en bucle. */
+  if (senseMoviment) {
+    var clips = document.querySelectorAll('.mosaic__clip');
+    for (var i = 0; i < clips.length; i++) {
+      clips[i].removeAttribute('autoplay');
+      clips[i].pause();
+    }
+  }
+
+  /* 2. Franja de cartells: canvi automàtic cada 10 s i fletxes per passar-ne
+        un. Sense JavaScript la rotació la continua fent el CSS; el que aporta
+        això són les fletxes i reiniciar el comptador quan s'hi clica. */
+  var faixa = document.querySelector('.faixa-slider');
+  if (!faixa) return;
+
+  var fotos = faixa.querySelectorAll('.faixa-slider__foto');
+  var enrere = faixa.querySelector('.faixa-slider__fletxa--enrere');
+  var endavant = faixa.querySelector('.faixa-slider__fletxa--endavant');
+  if (fotos.length < 2 || !enrere || !endavant) return;
+
+  var actual = 0;
+  var comptador;
+
+  faixa.setAttribute('data-js', '');
+  fotos[0].classList.add('es-veu');
+
+  function mostra(i) {
+    fotos[actual].classList.remove('es-veu');
+    actual = (i + fotos.length) % fotos.length;
+    fotos[actual].classList.add('es-veu');
+  }
+
+  function arrenca() {
+    clearInterval(comptador);
+    if (senseMoviment) return;
+    comptador = setInterval(function () { mostra(actual + 1); }, 10000);
+  }
+
+  enrere.addEventListener('click', function () {
+    mostra(actual - 1);
+    arrenca();
+  });
+
+  endavant.addEventListener('click', function () {
+    mostra(actual + 1);
+    arrenca();
+  });
+
+  arrenca();
+})();

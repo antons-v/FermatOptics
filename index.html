@@ -370,7 +370,7 @@
     <div class="peu__graella">
       <div>
         <a class="marca" href="index.html"><img class="marca__logo" src="public/images/fermat/icona.avif" alt="" width="160" height="160">Fermat <span>Òptics</span></a>
-        <p style="color:var(--text-suau)">
+        <p class="peu__lema">
           Centre òptic i auditiu a Barcelona des del 1998.
         </p>
       </div>
@@ -414,57 +414,7 @@
   </div>
 </footer>
 
-<!-- Franja de cartells: canvi automàtic cada 10 s i fletxa per passar-ne un.
-     Si no hi ha JavaScript, la rotació la continua fent el CSS. -->
-<script>
-/* Qui ha demanat menys moviment al sistema veu el fotograma fix, no el bucle */
-(function () {
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var clip = document.querySelector('.mosaic__clip');
-  if (clip) { clip.removeAttribute('autoplay'); clip.pause(); }
-})();
-
-(function () {
-  var faixa = document.querySelector('.faixa-slider');
-  if (!faixa) return;
-
-  var fotos = faixa.querySelectorAll('.faixa-slider__foto');
-  var enrere = faixa.querySelector('.faixa-slider__fletxa--enrere');
-  var endavant = faixa.querySelector('.faixa-slider__fletxa--endavant');
-  if (fotos.length < 2 || !enrere || !endavant) return;
-
-  var actual = 0;
-  var comptador;
-  var senseMoviment = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  faixa.setAttribute('data-js', '');
-  fotos[0].classList.add('es-veu');
-
-  function mostra(i) {
-    fotos[actual].classList.remove('es-veu');
-    actual = (i + fotos.length) % fotos.length;
-    fotos[actual].classList.add('es-veu');
-  }
-
-  function arrenca() {
-    clearInterval(comptador);
-    if (senseMoviment) return;
-    comptador = setInterval(function () { mostra(actual + 1); }, 10000);
-  }
-
-  enrere.addEventListener('click', function () {
-    mostra(actual - 1);
-    arrenca();
-  });
-
-  endavant.addEventListener('click', function () {
-    mostra(actual + 1);
-    arrenca();
-  });
-
-  arrenca();
-})();
-</script>
+<script src="js/web.js" defer></script>
 
 </body>
 </html>

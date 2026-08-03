@@ -1,0 +1,16 @@
+# Els fitxers de text es guarden i es despleguen sempre amb salts de línia LF.
+# Important per a la seguretat: la política de continguts (CSP) de vercel.json
+# porta el hash SHA-256 del bloc JSON-LD d'index.html. Si els salts de línia
+# canviessin a CRLF, el hash deixaria de coincidir i el navegador bloquejaria
+# aquell bloc.
+* text=auto eol=lf
+
+# Binaris: que git no els toqui mai
+*.avif binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.webm binary
+*.mp4  binary
+*.woff2 binary
