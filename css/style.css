@@ -1170,14 +1170,16 @@ section {
   color: var(--text);
 }
 
-/* Foto amb efecte fix */
+/* Foto de la cel·la del mosaic.
+   Abans duia background-attachment: fixed per fer efecte de paral·laxi, però
+   això obliga el navegador a repintar la imatge a cada fotograma i li treu
+   l'scroll accelerat a tota la pàgina: es notava com si l'scroll s'encallés. */
 .mosaic__foto {
   background-image: url("../public/images/fermat/cartell-ulleres-sol.avif");
-  background-size: 60vw; /* poc més gran que la cel·la: zoom mínim */
-  background-position: right center; /* alineada a la cel·la (a dalt a la dreta) */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-color: var(--sorra-fonda);
-  background-attachment: fixed; /* parallax: es queda fixa en fer scroll */
 }
 
 /* Vídeo (o foto de mostra) */
@@ -1201,13 +1203,10 @@ section {
   background: var(--sorra-fonda);
 }
 
-/* Mòbil: s'apila en una columna i la foto perd l'efecte fix */
+/* Mòbil: el mosaic s'apila en una columna */
 @media (max-width: 48rem) {
   .mosaic {
     grid-template-columns: 1fr;
-  }
-  .mosaic__foto {
-    background-attachment: scroll;
   }
 }
 
