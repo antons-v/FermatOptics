@@ -18,7 +18,29 @@
     }
   }
 
-  /* 2. Franja de cartells: canvi automàtic cada 10 s i fletxes per passar-ne
+  /* 2. Els vídeos només es reprodueixen quan es veuen. Descodificar vídeo
+        mentre fas scroll per una altra part de la pàgina fa saltar l'scroll,
+        i a més gasta bateria per res. */
+  if (!senseMoviment && 'IntersectionObserver' in window) {
+    var vigilant = new IntersectionObserver(function (entrades) {
+      for (var j = 0; j < entrades.length; j++) {
+        var video = entrades[j].target;
+        if (entrades[j].isIntersecting) {
+          var promesa = video.play();
+          if (promesa && promesa.catch) { promesa.catch(function () {}); }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      }
+    }, { threshold: 0.15 });
+
+    var videos = document.querySelectorAll('.mosaic__clip');
+    for (var k = 0; k < videos.length; k++) {
+      vigilant.observe(videos[k]);
+    }
+  }
+
+  /* 3. Franja de cartells: canvi automàtic cada 10 s i fletxes per passar-ne
         un. Sense JavaScript la rotació la continua fent el CSS; el que aporta
         això són les fletxes i reiniciar el comptador quan s'hi clica. */
   var faixa = document.querySelector('.faixa-slider');

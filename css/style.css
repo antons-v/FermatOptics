@@ -636,10 +636,10 @@ section {
   z-index: 1;
   /* Puja i se solapa amb el vídeo de sobre */
   margin-top: calc(clamp(2rem, 6vw, 5.5rem) * -1);
-  /* Taronja translúcid: es veu el que hi ha a sota */
-  background: rgb(240 184 132 / 72%);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  /* Taronja translúcid: es veu el que hi ha a sota. Sense backdrop-filter:
+     desenfocar el fons d'un bloc tan gran, i a sobre d'un vídeo, obliga el
+     navegador a recalcular-ho a cada fotograma i fa saltar l'scroll. */
+  background: rgb(240 184 132 / 78%);
   border: 1px solid rgb(255 255 255 / 45%);
   border-radius: 8px; /* cantonades gairebé rectes, com un full */
   padding: clamp(1.5rem, 0.8rem + 3vw, 3.25rem) clamp(1rem, 0.4rem + 3vw, 2.75rem);
