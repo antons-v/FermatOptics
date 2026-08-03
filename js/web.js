@@ -22,6 +22,9 @@
         mentre fas scroll per una altra part de la pàgina fa saltar l'scroll,
         i a més gasta bateria per res. */
   if (!senseMoviment && 'IntersectionObserver' in window) {
+    /* rootMargin de 600 px: el vídeo arrenca abans d'entrar a la pantalla.
+       Engegar-lo just quan es veu feia que el primer descodificat coincidís
+       amb l'scroll, i es notava com una aturada d'un segon a mitja pàgina. */
     var vigilant = new IntersectionObserver(function (entrades) {
       for (var j = 0; j < entrades.length; j++) {
         var video = entrades[j].target;
@@ -32,7 +35,7 @@
           video.pause();
         }
       }
-    }, { threshold: 0.15 });
+    }, { rootMargin: '600px 0px', threshold: 0 });
 
     var videos = document.querySelectorAll('.mosaic__clip');
     for (var k = 0; k < videos.length; k++) {
