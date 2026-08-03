@@ -315,9 +315,12 @@
       </blockquote>
     </div>
 
-    <!-- (1,2) foto amb efecte fix -->
-    <div class="mosaic__cel mosaic__foto" role="img"
-         aria-label="Detall d'una mirada"></div>
+    <!-- (1,2) foto amb paral·laxi: la mou el JS amb transform, que va per GPU -->
+    <div class="mosaic__cel mosaic__foto">
+      <img src="public/images/fermat/cartell-ulleres-sol.avif"
+           width="928" height="927" loading="lazy" decoding="async"
+           alt="Ulleres de sol de Fermat Òptics">
+    </div>
 
     <!-- (2,1) vídeo (de moment, foto de mostra amb botó de reproducció) -->
     <div class="mosaic__cel mosaic__video">

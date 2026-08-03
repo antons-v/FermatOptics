@@ -40,7 +40,44 @@
     }
   }
 
-  /* 3. Franja de cartells: canvi automàtic cada 10 s i fletxes per passar-ne
+  /* 3. Paral·laxi de la foto del mosaic. Només movem un transform, i només
+        mentre la cel·la es veu, dins de requestAnimationFrame. */
+  var cel = document.querySelector('.mosaic__foto');
+  var foto = cel && cel.querySelector('img');
+
+  if (foto && !senseMoviment && 'IntersectionObserver' in window) {
+    var visible = false;
+    var demanat = false;
+    var RECORREGUT = 60; /* píxels que es desplaça la foto, de dalt a baix */
+
+    function situa() {
+      demanat = false;
+      var caixa = cel.getBoundingClientRect();
+      var centre = caixa.top + caixa.height / 2;
+      /* -1 quan la cel·la entra per baix, +1 quan surt per dalt */
+      var avanc = (centre - window.innerHeight / 2) / window.innerHeight;
+      avanc = Math.max(-1, Math.min(1, avanc));
+      foto.style.transform = 'translate3d(0,' + (avanc * RECORREGUT).toFixed(1) + 'px,0)';
+    }
+
+    function apunta() {
+      if (!demanat && visible) {
+        demanat = true;
+        window.requestAnimationFrame(situa);
+      }
+    }
+
+    new IntersectionObserver(function (entrades) {
+      visible = entrades[0].isIntersecting;
+      if (visible) { situa(); }
+    }).observe(cel);
+
+    window.addEventListener('scroll', apunta, { passive: true });
+    window.addEventListener('resize', apunta, { passive: true });
+    situa();
+  }
+
+  /* 4. Franja de cartells: canvi automàtic cada 10 s i fletxes per passar-ne
         un. Sense JavaScript la rotació la continua fent el CSS; el que aporta
         això són les fletxes i reiniciar el comptador quan s'hi clica. */
   var faixa = document.querySelector('.faixa-slider');
