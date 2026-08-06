@@ -523,9 +523,10 @@ section {
   max-width: 34rem;
   margin-top: clamp(-8rem, -12vw, -4.5rem); /* puja per solapar el hero */
   margin-bottom: var(--buit-seccio);
-  background: rgb(244 207 164 / 82%); /* taronja fluix semitransparent */
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  /* Taronja fluix semitransparent. Sense backdrop-filter: desenfocar el que
+     hi ha a sota d'una caixa gran s'ha de recalcular a cada fotograma i és
+     una de les coses que fa saltar l'scroll. */
+  background: rgb(244 207 164 / 88%);
   color: #3a2717;
   padding: clamp(1.75rem, 4vw, 3rem);
   border-radius: var(--radi);
@@ -1903,12 +1904,22 @@ section {
   border-top: 1px solid var(--au-filet);
 }
 
-.au-marca {
-  display: block;
+/* Logos de les marques d'audiòfons amb què treballem */
+.au-marques {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 1rem + 4vw, 4.5rem);
+  margin-top: clamp(2.5rem, 1.8rem + 3vw, 4rem);
+}
+
+.au-marques img {
   width: auto;
-  max-width: 11rem;
+  max-width: 10rem;
+  max-height: 3.25rem;
   height: auto;
-  margin: clamp(2.5rem, 1.8rem + 3vw, 4rem) auto 0;
+  object-fit: contain;
 }
 
 /* Crida final en forma de píndola */
