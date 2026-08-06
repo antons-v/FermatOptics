@@ -1916,8 +1916,8 @@ section {
 
 .au-marques img {
   width: auto;
-  max-width: 10rem;
-  max-height: 3.25rem;
+  max-width: 16rem;
+  max-height: 5.5rem;
   height: auto;
   object-fit: contain;
 }
