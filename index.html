@@ -13,6 +13,11 @@
 <meta property="og:locale" content="ca_ES">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Seguretat. A Vercel arriben com a capçaleres HTTP; aquí van dins de
+     l'HTML perquè també protegeixin si la web se serveix des d'un
+     allotjament on no podem tocar les capçaleres. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-EImvqnRNNUEY0tyMjdMnXCAs4Y+Ha4IFbPv3E7zmmEI='; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="stylesheet" href="css/style.css">
 
 <!-- Fitxes de negoci local: el que fa que apareguin al mapa de Google quan algú
