@@ -1,32 +1,29 @@
-# Fermat Òptics
+# Fermat Òptics · Website
 
-Lloc web del centre òptic i auditiu **Fermat Òptics** (Barcelona, des del 1998).
-Dues botigues: Ausiàs Marc, 59 i Còrsega, 671.
+Website for **Fermat Òptics**, an optical and hearing-care centre in Barcelona (since 1998) with two stores.
 
-## Tecnologia
+🔗 **Live demo:** https://fermat-optics.vercel.app
 
-HTML + CSS purs. **Sense frameworks, sense build, 0 JavaScript.**
-Pensat per ser lleuger, ràpid i eficient energèticament.
+## ✨ Highlights
+- **Zero frameworks, zero build step:** pure HTML + CSS, with only a few lines of JavaScript
+- **Fast and lightweight:** AVIF images with lazy loading, self-hosted subset font, no analytics or cookies
+- **Secure by default:** strict Content-Security-Policy, HSTS, X-Frame-Options and other security headers via `vercel.json`
+- **SEO-ready:** structured data (JSON-LD), `sitemap.xml` and `robots.txt`
+- **Accessible and responsive:** native mobile menu with `<details>` and smooth page transitions with View Transitions
+- **Legal pages:** legal notice and privacy policy
 
-- Fonts del sistema + Bodoni Moda (servida des del propi domini)
-- Imatges en AVIF amb càrrega mandrosa (`loading="lazy"`)
-- Menú mòbil natiu amb `<details>`, transicions amb `@view-transition`
-- Sense analítica ni cookies
-
-## Estructura
-
+## 🗂️ Structure
 ```
-├── pages/          Pàgines HTML (index, serveis, optica, audio, contacte, legals)
-├── css/style.css   Tot el disseny
-├── fonts/          Bodoni Moda (subset llatí)
-├── public/images/  Imatges (fermat/, logos/, serveis/)
+├── index.html, serveis.html, optica.html, audio.html, contacte.html
+├── avis-legal.html, politica-privacitat.html
+├── css/          Styles
+├── js/           Minimal enhancements
+├── fonts/        Bodoni Moda (Latin subset)
+├── public/images Images (AVIF)
+├── vercel.json   Security and cache headers
 ├── robots.txt
 └── sitemap.xml
 ```
 
-## Pendent abans de publicar
-
-- Connectar el formulari de contacte a **Formspree** (falta el correu de destinació)
-- Completar les pàgines legals (avís legal i privacitat) amb les dades fiscals
-- Confirmar els horaris de les dues botigues
-- Substituir les fotos de prova per originals en alta resolució
+## 🚀 Deployment
+Deployed on **Vercel** as a static site. No build step needed.
